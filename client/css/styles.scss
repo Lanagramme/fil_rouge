@@ -1,0 +1,55 @@
+@import './utils/utils';
+
+*{ box-sizing: border-box; }
+
+body {
+	padding: 0; margin: 0;
+  background: linear-gradient(180deg, #FAF8F9 0%,#F0FEFF0 100%);
+}
+
+.vue{ 
+	height: 100vh; width:100vw;
+	position: relative;
+
+	&:not(#splash){
+		padding-top: 50px;
+
+		
+	}
+	
+	.content{
+		margin: auto; padding: 15px;
+		max-width: 1000px; min-height: 100vh;
+		position: relative;
+
+		.retour {
+			position: absolute;
+			top: -30px;
+		}
+	}
+}
+
+#splash {
+	.content { @include centered(); }
+	span {
+			position: absolute;
+			bottom: 100px;
+			left:0; right: 0;
+			text-align: center;
+		}
+}
+
+.vignette {
+	$taille: 75px;
+	height: $taille; width: $taille;
+}
+
+.vignette-medium {
+	$taille: 70px;
+	height: $taille; width: $taille;
+}
+
+.vignette-small{
+	$taille: 50px;
+	height: $taille; width: $taille;
+}

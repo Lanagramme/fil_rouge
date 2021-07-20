@@ -1,0 +1,62 @@
+.hidden {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(180deg, #FAF8F9 0%, #F0FEFF0 100%);
+}
+
+.vue {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.vue:not(#splash) {
+  padding-top: 50px;
+}
+.vue .content {
+  margin: auto;
+  padding: 15px;
+  max-width: 1000px;
+  min-height: 100vh;
+  position: relative;
+}
+.vue .content .retour {
+  position: absolute;
+  top: -30px;
+}
+
+#splash .content {
+  display: grid;
+  place-items: center;
+}
+#splash span {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.vignette {
+  height: 75px;
+  width: 75px;
+}
+
+.vignette-medium {
+  height: 70px;
+  width: 70px;
+}
+
+.vignette-small {
+  height: 50px;
+  width: 50px;
+}
+
+/*# sourceMappingURL=styles.css.map */

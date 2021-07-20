@@ -1,0 +1,8 @@
+@mixin centered{
+	display: grid;
+	place-items: center;
+}
+
+@mixin darken{
+	background: linear-gradient(0deg,rgba(0,0,0)0%, rgba(255,255,255,0.1) 100%);
+}
