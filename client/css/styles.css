@@ -9,7 +9,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: linear-gradient(180deg, #FAF8F9 0%, #F0FEFF0 100%);
+  background: linear-gradient(180deg, #FAF8F9 0%, #F0EFF0 100%);
 }
 
 .vue {
@@ -42,6 +42,7 @@ body {
   left: 0;
   right: 0;
   text-align: center;
+  @include text-shadow;
 }
 
 .vignette {
@@ -57,6 +58,15 @@ body {
 .vignette-small {
   height: 50px;
   width: 50px;
+}
+
+input[type=text] {
+  border: 0px transparent;
+  height: 57px;
+  width: 100%;
+  padding-left: 15px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=styles.css.map */
