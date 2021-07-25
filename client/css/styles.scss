@@ -8,14 +8,15 @@ body {
 }
 
 .vue{ 
-	height: 100vh; width:100vw;
 	position: relative;
 
 	&:not(#splash){
-		padding-top: 50px;
+		.content{
+			padding-top: 50px;
+		}
 
 		
-	}
+	} 
 	
 	.content{
 		margin: auto; padding: 15px;
@@ -24,28 +25,61 @@ body {
 
 		.retour {
 			position: absolute;
-			top: -30px;
+			top: 30px;
+		}
+
+		.gradient {
+			@include darken();
+			height: 100%;
+		}
+		
+		.background,.gardient,.content{
+			position: absolute;
+			inset: 0;
+		}
+	}
+	
+	&#splash {
+		.content { @include centered(); }
+		span {
+				position: absolute;
+				bottom: 100px;
+				left:0; right: 0;
+				text-align: center;
+			}
+	}
+
+	&#accueil{
+		.btn-filtre-annuaire {
+			margin: 25px 0;
+			border-radius: 10px;
+			height: 121px;
+			overflow: hidden;
+			color: white;
+			position: relative;
+			display: flex;
+			flex-direction: column-reverse;
+			@include box-shadow();
+			.titre_app{
+				position: absolute;
+				left: 20px;
+				@include text-shadow();
+			}
 		}
 	}
 }
 
-#splash {
-	.content { @include centered(); }
-	span {
-			position: absolute;
-			bottom: 100px;
-			left:0; right: 0;
-			text-align: center;
-		}
+[class^="vignette"]{
+	border-radius: 10px;
 }
 
 .vignette {
-	$taille: 75px;
+	$taille: 70px;
 	height: $taille; width: $taille;
 }
 
 .vignette-medium {
-	$taille: 70px;
+	$taille: 75px;
 	height: $taille; width: $taille;
 }
 
@@ -62,3 +96,78 @@ input[type="text"] {
 	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
 	border-radius: 5px;
 }
+
+
+
+.titre_app {
+	font-size: 36px;
+	padding: 21px 0;
+}
+
+.select_slider{
+	padding: 20px 0;
+	.restaurant_type{
+		width: 100px;
+		*{margin: auto;}
+		div{@include centered();}
+		p{
+			text-align: center;
+			padding-top: 5px;
+		}
+	}
+}
+
+.liste_restaurants{
+	padding-top: 20px;
+	.case_restaurant{
+		padding: 10px;
+		display: flex;
+		align-items: center;
+		.adresse{
+			padding-left: 20px;
+		}
+	}
+}
+
+.text-important{
+	font-weight: 700;
+}
+
+.case_restaurant:not(:last-of-type), .menu_deroulant .bandeau_choix{
+	border-bottom: 1px solid $pale-secondary;
+}
+
+.bandeau_choix {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 15px;
+	p{
+		margin: 0%;
+	}
+}
+
+.menu_deroulant .liste_restaurants, .menu_deroulant .case_restaurant:first-of-type:hover{
+	box-shadow: 1px 10px 5px 0px rgba(0,0,0,0.1) inset;
+	background-color: white;
+}
+
+.menu_deroulant	{
+	position: absolute;
+	left: 0; right: 0;
+	.liste_restaurants{
+		padding: 0;
+	}
+
+	.bandeau_choix:hover{
+		background-color: #c4c4c450;
+	}
+
+	.case_restaurant:hover{
+		background-color: #F8F9FD!important;
+	}
+}
+
+.case_restaurant:hover{
+	background-color: #c4c4c450;
+}
+

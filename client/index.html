@@ -3,26 +3,114 @@
 	<title>Projet Fil rouge</title>
 	<meta charser="utf-8">
 	<link rel="stylesheet" href="/css/styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 <body>	
-	<div id="splash" class="vue hidden">
+	<div id="splash" class="vue ">
 		<div class='background'>
 			<div class="gradient"></div>
 		</div>
 		<div class="content">
 			<h1>Menu à la carte</h1>
-			<span clas"texte-secondary">Une petite faim ?</span>
+			<span class="texte-secondary">Une petite faim ?</span>
 		</div>
 	</div>
 
-	<div class="vue">
+	<div id="accueil" class="vue">
 		<div class="content">
-			<span class="retour"><-</span>
-			<h1>Title</h1>
+			<div class="titre_app">Title</div>
+			<div class="select_slider">
+				<div class="restaurant_type">
+					<div class="vignette-medium bg-main">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-egg-fried" viewBox="0 0 16 16">
+							<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+							<path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+						</svg>
+					</div>
+					<p>Title</p>
+				</div>
+			</div>
 			<input type="text" placeholder="Your text here">
+			<div class="btn-filtre-annuaire">
+				<div class="background">
+					<div class="gradient"></div>
+				</div>
+				<div class="titre_app">Par Filter</div>
+			</div>
 		</div>
 	</div>
 
-	<script src="/js/script.js"/>
+	<div id="recherche" class="vue">
+		<div class="content">
+			<span class="retour">
+				<svg width="30" height="30" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+				</svg>
+			</span>
+			<div class="titre_app">Title</div>
+			<input type="text" placeholder="Your text here">
+			<div class="liste_restaurants">
+				<div class="case_restaurant">
+					<div class="vignette bg-main"></div>
+					<div class="adresse">
+						<p class="text-important">Nom du restaurant</p>
+						<p class="text-pale">Adresse du restaurant</p>
+					</div>
+				</div>
+				<div class="case_restaurant">
+					<div class="vignette bg-main"></div>
+					<div class="adresse">
+						<p class="text-important">Nom du restaurant</p>
+						<p class="text-pale">Adresse du restaurant</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu_deroulant">
+				<div>
+					<div class="bandeau_choix">
+						<p>A-F</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					</div>
+				</div>
+				<div>
+					<div class="bandeau_choix text-important text-main">
+						<p>A-F</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					</div>
+					<div class="liste_restaurants">
+						<div class="case_restaurant">
+							<div class="vignette bg-main"></div>
+							<div class="adresse">
+								<p class="text-important">Nom du restaurant</p>
+								<p class="text-pale">Adresse du restaurant</p>
+							</div>
+						</div>
+						<div class="case_restaurant">
+							<div class="vignette bg-main"></div>
+							<div class="adresse">
+								<p class="text-important">Nom du restaurant</p>
+								<p class="text-pale">Adresse du restaurant</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="bandeau_choix">
+						<p>A-F</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/script.js"></script>
 </body>
 </html>

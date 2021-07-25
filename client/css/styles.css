@@ -1,25 +1,39 @@
+.bg-main {
+  background-color: #53E38E;
+}
+
+.text-main {
+  color: #53E38E;
+}
+
+.text-pale {
+  color: #AEAEAE;
+}
+
 .hidden {
   display: none;
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
   padding: 0;
   margin: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FAF8F9), to(#F0EFF0));
   background: linear-gradient(180deg, #FAF8F9 0%, #F0EFF0 100%);
 }
 
 .vue {
-  height: 100vh;
-  width: 100vw;
   position: relative;
 }
-.vue:not(#splash) {
+
+.vue:not(#splash) .content {
   padding-top: 50px;
 }
+
 .vue .content {
   margin: auto;
   padding: 15px;
@@ -27,32 +41,73 @@ body {
   min-height: 100vh;
   position: relative;
 }
+
 .vue .content .retour {
   position: absolute;
-  top: -30px;
+  top: 30px;
 }
 
-#splash .content {
+.vue .content .gradient {
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(0, 0, 0, 0.1)));
+  background: linear-gradient(180deg, white 0%, rgba(0, 0, 0, 0.1) 100%);
+  height: 100%;
+}
+
+.vue .content .background, .vue .content .gardient, .vue .content .content {
+  position: absolute;
+  inset: 0;
+}
+
+.vue#splash .content {
+  display: -ms-grid;
   display: grid;
   place-items: center;
 }
-#splash span {
+
+.vue#splash span {
   position: absolute;
   bottom: 100px;
   left: 0;
   right: 0;
   text-align: center;
-  @include text-shadow;
+}
+
+.vue#accueil .btn-filtre-annuaire {
+  margin: 25px 0;
+  border-radius: 10px;
+  height: 121px;
+  overflow: hidden;
+  color: white;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 5px 11px rgba(0, 0, 0, 0.2);
+}
+
+.vue#accueil .btn-filtre-annuaire .titre_app {
+  position: absolute;
+  left: 20px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+[class^="vignette"] {
+  border-radius: 10px;
 }
 
 .vignette {
-  height: 75px;
-  width: 75px;
+  height: 70px;
+  width: 70px;
 }
 
 .vignette-medium {
-  height: 70px;
-  width: 70px;
+  height: 75px;
+  width: 75px;
 }
 
 .vignette-small {
@@ -60,13 +115,109 @@ body {
   width: 50px;
 }
 
-input[type=text] {
+input[type="text"] {
   border: 0px transparent;
   height: 57px;
   width: 100%;
   padding-left: 15px;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
 
+.titre_app {
+  font-size: 36px;
+  padding: 21px 0;
+}
+
+.select_slider {
+  padding: 20px 0;
+}
+
+.select_slider .restaurant_type {
+  width: 100px;
+}
+
+.select_slider .restaurant_type * {
+  margin: auto;
+}
+
+.select_slider .restaurant_type div {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.select_slider .restaurant_type p {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.liste_restaurants {
+  padding-top: 20px;
+}
+
+.liste_restaurants .case_restaurant {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.liste_restaurants .case_restaurant .adresse {
+  padding-left: 20px;
+}
+
+.text-important {
+  font-weight: 700;
+}
+
+.case_restaurant:not(:last-of-type), .menu_deroulant .bandeau_choix {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.bandeau_choix {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 15px;
+}
+
+.bandeau_choix p {
+  margin: 0%;
+}
+
+.menu_deroulant .liste_restaurants, .menu_deroulant .case_restaurant:first-of-type:hover {
+  -webkit-box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.1) inset;
+  background-color: white;
+}
+
+.menu_deroulant {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.menu_deroulant .liste_restaurants {
+  padding: 0;
+}
+
+.menu_deroulant .bandeau_choix:hover {
+  background-color: #c4c4c450;
+}
+
+.menu_deroulant .case_restaurant:hover {
+  background-color: #F8F9FD !important;
+}
+
+.case_restaurant:hover {
+  background-color: #c4c4c450;
+}
 /*# sourceMappingURL=styles.css.map */

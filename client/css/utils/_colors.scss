@@ -1,6 +1,9 @@
 $main: #53E38E;
 $pale-main: #E1FD8C;
 
-$secondary: #A6ACC0;
+$secondary: #AEAEAE;
+$pale-secondary: #c4c4c4;
 
-
+.bg-main { background-color: $main; }
+.text-main {color: $main;}
+.text-pale {color: $secondary;}
