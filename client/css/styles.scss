@@ -17,6 +17,13 @@ body {
 
 		
 	} 
+
+	.content, .background{
+		.gradient {
+			@include darken();
+			height: 100%;
+		}
+	}
 	
 	.content{
 		margin: auto; padding: 15px;
@@ -27,11 +34,6 @@ body {
 			position: absolute;
 			top: 30px;
 		}
-
-		.gradient {
-			@include darken();
-			height: 100%;
-		}
 		
 		.background,.gardient,.content{
 			position: absolute;
@@ -40,12 +42,17 @@ body {
 	}
 	
 	&#splash {
-		.content { @include centered(); }
+		.content { 
+			@include centered();
+			position: absolute!important;
+			inset: 0;
+		}
 		span {
 				position: absolute;
 				bottom: 100px;
 				left:0; right: 0;
 				text-align: center;
+				@include text-shadow;
 			}
 	}
 
