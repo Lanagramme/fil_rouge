@@ -5,6 +5,7 @@
 body {
 	padding: 0; margin: 0;
   background: linear-gradient(180deg, #FAF8F9 0%,#F0EFF0 100%);
+	font-family: 'Roboto', sans-serif;
 }
 
 .vue{ 
@@ -59,7 +60,6 @@ body {
 	&#accueil{
 		.btn-filtre-annuaire {
 			margin: 25px 0;
-			border-radius: 10px;
 			height: 121px;
 			overflow: hidden;
 			color: white;
@@ -67,6 +67,7 @@ body {
 			display: flex;
 			flex-direction: column-reverse;
 			@include box-shadow();
+			@include rounded();
 			.titre_app{
 				position: absolute;
 				left: 20px;
@@ -77,7 +78,7 @@ body {
 }
 
 [class^="vignette"]{
-	border-radius: 10px;
+	@include rounded();
 }
 
 .vignette {
@@ -178,3 +179,169 @@ input[type="text"] {
 	background-color: #c4c4c450;
 }
 
+#template_page_admin {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	height: 100vh;
+	overflow-y: scroll;
+	
+
+
+	nav {
+		width: 300px;
+		height: 100vh;
+		display: grid;
+		grid-template-rows: auto 1fr;
+		font-weight: bold;
+		text-transform: uppercase;
+		
+		> section{
+			display: grid;
+			place-items: center;
+		}
+
+		&.bg-dark {
+			.title, .link.active {
+				color: $pale-secondary;
+			}
+		}
+
+
+		.link, .title { 
+			text-align: center;
+			color: $main; 
+		}
+
+		.menu {
+			margin: 10px;
+			width: 80%;
+			.link {
+				padding: 5px 20px;
+				&.active {
+					background-color: #00000052;
+				}
+			}
+		}
+
+	}
+	main {
+		padding: 1em 4em;
+		.section {
+			background: linear-gradient(180deg, #FAF8F9 0%, #F0EFF0 100%);
+	
+			border: 1px solid #BDBDBD;
+			box-sizing: border-box;
+			padding: 20px;
+			margin: 1em;
+			
+			@include rounded();
+		}
+	}
+}
+
+.button-dark, .button-red {
+	width: 179px; height: 50px;
+
+	border-radius: 8px;
+	color: white;
+
+	display: grid;
+	place-items: center;
+
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 1em;
+}
+
+.button-dark {
+	border: 2px solid $dark;
+	background-color: $dark;
+}
+
+.button-red {
+	border: 2px solid #EB5757;
+	background-color: #EB5757;
+} 
+
+.form-group {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1em;
+	.label-right {
+		text-align: right;
+	}
+}
+
+label{
+	margin-left : 10px; 
+	margin-right: 10px; 
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+input {
+	margin-top: 5px;
+	height: 52px;
+	border-radius: 5px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.etiquete {
+	margin: 2em;
+	position: relative;
+	width :131px;
+	img {
+		@include rounded();
+		width: 100%;
+		background-color: $secondary;
+		overflow: hidden;
+		height :83px;
+	}
+}
+
+.description { 
+	grid-template-columns: 1fr auto;
+	padding-left: 15px;
+	padding-top: 5px;
+
+}
+
+.edit-menu-link {
+
+	position: absolute;
+	top: -2px;
+	right: 5px;
+}
+
+.etiquete-h {
+	margin: 2em;
+	position: relative;
+	width: 250px;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	img{
+		background-color: $secondary;
+		overflow: hidden;
+		height: 70px;
+		width: 70px;
+		border-radius: 5px;
+	}
+	.description {
+		padding-right: 20px;
+	}
+
+}
+
+.portrait {
+	border-radius: 50%;
+	background: linear-gradient(156.11deg, #C4E759 12.5%, #6DE195 100%);
+	&.edition { height: 146px; width: 146px; }
+	&.display { height: 60px ; width:  60px; }
+}

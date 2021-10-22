@@ -3,7 +3,11 @@ $pale-main: #E1FD8C;
 
 $secondary: #AEAEAE;
 $pale-secondary: #c4c4c4;
+$dark: #007F5F;
 
 .bg-main { background-color: $main; }
+.bg-dark { background-color: $dark; }
+
 .text-main {color: $main;}
 .text-pale {color: $secondary;}
+.text-dark {color: $dark;}

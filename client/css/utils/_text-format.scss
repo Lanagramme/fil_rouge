@@ -1,0 +1,44 @@
+p {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.bold-text {
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.strong-text {
+  @extend .text-important;
+  border-radius: 3px;
+}
+
+
+.title {
+  font-family: 'Original Surfer', cursive;
+  font-weight: 400;
+  font-Size : 36px;
+  line-height: 45.04px;
+}
+
+.title-2 {
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.pale-text { 
+  @extend .text-pale;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+
+  color: #A6ACC0;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
