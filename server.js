@@ -12,8 +12,9 @@ app.get('/css/styles.css', (req,res) => {
 	res.sendFile(path.join(__dirname, '/client/css/styles.css'))
 })
 
-app.get('/js/script.js', (req,res)=>{
-	res.sendFile(path.join(__dirname, '/client/js/script.js'))
+
+app.get('/js/*', (req,res)=>{
+	res.sendFile(path.join(__dirname, '/client/js/'+req.params[0] ))
 })
 app.listen('3000')
 

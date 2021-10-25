@@ -63,17 +63,48 @@ const test = {
 	},
 }
 	
-const data = {
+const
+	cl = console.log,
+data = {
 	id: false,
 	type: "produit",
 	data: false,
 	callback: x => console.log(x),
 	domaine : "https://myemnuapi.herokuapp.com",
+},
+data2 = { 
+	id: false,
+	type: "entreprise",
+	data: false,
+	callback: (res) => {
+		response = Object.values(res.response)
+
+		response.forEach( x => {
+
+			adresses = x.localisation.split(' ').filter( (x, i) => i )
+			x.localisation = adresses.join(' ')
+
+		})
+
+		response.sort((a, b) => (a.localisation > b.localisation) ? 1 : -1)
+
+		ordered = {}
+
+		response.forEach( x => {
+			if (typeof ordered[x.localisation.split('')[0]] != 'object') 
+				ordered[x.localisation.split('')[0]] = []
+			ordered[x.localisation.split('')[0]].push(x)
+		})
+		
+		cl(ordered)
+	},
+	domaine : "https://myemnuapi.herokuapp.com",
+
 }
 
 api = {
 	get(data) {
-		request("POST", `${data.domaine}/ask/${data.type}${data.id != false ? '/'+data.id+'/' : "/"}`, data)
+		request("GET", `${data.domaine}/ask/${data.type}${data.id != false ? '/'+data.id+'/' : "/"}`, data)
 	},
 	add(data) {
 		request("POST", `${data.domaine}/add/${data.type}/`, data)
@@ -92,8 +123,13 @@ request = (method, url, data) => {
 		url: url,
 		data: data.data ? data.data : null,
 	})
-	.done( respose => data.callback() )
+	.done( res => data.callback(res) )
 	.fail( (jqXHR, textStatus, errorThrown) => {
 		console.log(jqXHR, textStatus, errorThrown)
 	})
+}
+
+
+byName = () => {
+	api.get(data2)
 }
