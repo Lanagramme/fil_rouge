@@ -72,35 +72,46 @@ data = {
 	callback: x => console.log(x),
 	domaine : "https://myemnuapi.herokuapp.com",
 },
-data2 = { 
-	id: false,
-	type: "entreprise",
-	data: false,
-	callback: (res) => {
-		response = Object.values(res.response)
-
-		response.forEach( x => {
-
-			adresses = x.localisation.split(' ').filter( (x, i) => i )
-			x.localisation = adresses.join(' ')
-
-		})
-
-		response.sort((a, b) => (a.localisation > b.localisation) ? 1 : -1)
-
-		ordered = {}
-
-		response.forEach( x => {
-			if (typeof ordered[x.localisation.split('')[0]] != 'object') 
-				ordered[x.localisation.split('')[0]] = []
-			ordered[x.localisation.split('')[0]].push(x)
-		})
-		
-		cl(ordered)
-	},
-	domaine : "https://myemnuapi.herokuapp.com",
-
+data2 = { ...data },
+data3 = { ...data },
+set_data_for_sorting = (parametre, separateur, limite, data) => {
+	adresses = data[parametre].split(separateur).filter( (x, i) => i>limite )
+	return adresses.join(separateur)
+},
+sort_data = (filter, data)=> { 
+	ordered = {}
+	cl(filter)
+	data.sort((a, b) => (a[filter] > b[filter]) ? 1 : -1)
+	data.forEach( x => {
+		if (typeof ordered[x[filter].split('')[0]] != 'object') 
+			ordered[x[filter].split('')[0]] = []
+			cl(x[filter], x[filter].split('')[0], ordered[x[filter].split('')[0]])
+		ordered[x[filter].split('')[0]].push(x)
+	})
+	return ordered
 }
+
+data2.callback = (res) => {
+	const response = Object.values(res.response)
+	response.forEach( x => { 
+		x.full_localisation = x.localisation
+		x.localisation = set_data_for_sorting("localisation", ' ',0,x) 
+	})
+	cl(sort_data('localisation', response))
+},
+data3.callback = (res) => {
+	const response = Object.values(res.response)
+	response.forEach( x => {
+		x.full_nom = x.nom
+		if (["le", 'la', "les"].includes(x.nom.split(' ')[0].toLowerCase()))
+			x.nom = set_data_for_sorting('nom', ' ',0,x)
+		else if (x.nom[1] === "'")
+			x.nom = set_data_for_sorting('nom', '',1,x)
+	})
+	cl(sort_data('nom', response))
+}
+
+data2.type = data3.type = 'entreprise'
 
 api = {
 	get(data) {
@@ -129,7 +140,7 @@ request = (method, url, data) => {
 	})
 }
 
+byAdress = () => { api.get(data2) }
+byName   = () => { api.get(data3) }
 
-byName = () => {
-	api.get(data2)
-}
+byAdress()
