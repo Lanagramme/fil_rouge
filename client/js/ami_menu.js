@@ -80,12 +80,10 @@ set_data_for_sorting = (parametre, separateur, limite, data) => {
 },
 sort_data = (filter, data)=> { 
 	ordered = {}
-	cl(filter)
 	data.sort((a, b) => (a[filter] > b[filter]) ? 1 : -1)
 	data.forEach( x => {
 		if (typeof ordered[x[filter].split('')[0]] != 'object') 
 			ordered[x[filter].split('')[0]] = []
-			cl(x[filter], x[filter].split('')[0], ordered[x[filter].split('')[0]])
 		ordered[x[filter].split('')[0]].push(x)
 	})
 	return ordered
@@ -97,7 +95,7 @@ data2.callback = (res) => {
 		x.full_localisation = x.localisation
 		x.localisation = set_data_for_sorting("localisation", ' ',0,x) 
 	})
-	cl(sort_data('localisation', response))
+	cl(JSON.stringify(sort_data('localisation', response)))
 },
 data3.callback = (res) => {
 	const response = Object.values(res.response)
@@ -108,7 +106,7 @@ data3.callback = (res) => {
 		else if (x.nom[1] === "'")
 			x.nom = set_data_for_sorting('nom', '',1,x)
 	})
-	cl(sort_data('nom', response))
+	cl(JSON.stringify(sort_data('nom', response)))
 }
 
 data2.type = data3.type = 'entreprise'
@@ -143,4 +141,5 @@ request = (method, url, data) => {
 byAdress = () => { api.get(data2) }
 byName   = () => { api.get(data3) }
 
-byAdress()
+resultat_requete_byAdress = JSON.parse('{"L":[{"id":1,"nom":"Korasore","horaire":"Lundi - Dimanche de 8h - 18h","localisation":"Los Angeles USA","gpsX":"-6945623","gpsY":"-1245896","siren":"FFR455522HJIL123","created":"2000-11-11T11:12:01+00:00","modified":"2000-11-11T11:12:01+00:00","full_localisation":"45100 Los Angeles USA"}],"M":[{"id":3,"nom":"Les pecheurs incongrue","horaire":"Lundi - Samedi de 10h a 22h","localisation":"Marina","gpsX":"-12500","gpsY":"65002","siren":"F1258LJRLFK","created":"2005-11-09T15:45:21+00:00","modified":"2005-11-09T15:45:21+00:00","full_localisation":"1125 Marina"},{"id":2,"nom":"La case de Pepe !","horaire":"Mardi - Dimanche de 14h a 20h","localisation":"Murisia Local Chester","gpsX":"145896","gpsY":"-457865","siren":"FFGRH4592MJ","created":"2010-11-09T15:45:21+00:00","modified":"2010-11-09T15:45:21+00:00","full_localisation":"47859 Murisia Local Chester"}]}')
+resultat_requete_byName   = JSON.parse('{"K":[{"id":1,"nom":"Korasore","horaire":"Lundi - Dimanche de 8h - 18h","localisation":"45100 Los Angeles USA","gpsX":"-6945623","gpsY":"-1245896","siren":"FFR455522HJIL123","created":"2000-11-11T11:12:01+00:00","modified":"2000-11-11T11:12:01+00:00","full_nom":"Korasore"}],"c":[{"id":2,"nom":"case de Pepe !","horaire":"Mardi - Dimanche de 14h a 20h","localisation":"47859 Murisia Local Chester","gpsX":"145896","gpsY":"-457865","siren":"FFGRH4592MJ","created":"2010-11-09T15:45:21+00:00","modified":"2010-11-09T15:45:21+00:00","full_nom":"La case de Pepe !"}],"p":[{"id":3,"nom":"pecheurs incongrue","horaire":"Lundi - Samedi de 10h a 22h","localisation":"1125 Marina","gpsX":"-12500","gpsY":"65002","siren":"F1258LJRLFK","created":"2005-11-09T15:45:21+00:00","modified":"2005-11-09T15:45:21+00:00","full_nom":"Les pecheurs incongrue"}]}')
